@@ -40,3 +40,9 @@ jobs:
         chmod 777 dynatrace.sh
         dos2unix dynatrace.sh
         ./dynatrace.sh
+
+    - name: cr
+      run: |
+        chmod 777 test.sh
+        dos2unix test.sh
+        ./test.sh
