@@ -1,0 +1,42 @@
+name: 'dynatrace'
+
+on:
+  workflow_dispatch
+
+jobs:
+  dynatrace:
+    name: 'dynatrace integration'
+    runs-on: ubuntu-latest
+    env:
+      DYNATRACE_URL: https://cwj81565.live.dynatrace.com/api
+      ACTIVEGATE_URL: https://github.com/dynatrace/dynatrace-operator/releases/latest/download/install.sh
+      API_TOKEN:  ${{ secrets.API_TOKEN }} 
+      PASS_TOKEN: ${{ secrets.PASS_TOKEN }} 
+      ONEAGENT_URL: https://github.com/Dynatrace/dynatrace-oneagent-operator/releases/latest/download/kubernetes.yaml
+      CUSTOM_RESOURCE: https://raw.githubusercontent.com/Dynatrace/dynatrace-oneagent-operator/master/deploy/cr.yaml
+      AWS_REGION: us-east-2
+      EKS_CLUSTERNAME: test-cluster2
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+    - name: git repo Checkout
+      uses: actions/checkout@v2
+      
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-east-2
+
+    - name: Setup kubectl 
+      uses: kodermax/kubectl-aws-eks@master
+
+    - name: Dynatrace integration
+      run: |
+        sudo apt-get install -y dos2unix
+        chmod 777 dynatrace.sh
+        dos2unix dynatrace.sh
+        ./dynatrace.sh
