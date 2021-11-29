@@ -18,6 +18,6 @@ else
     
 	echo "Adding the dynatrace url and enabling the istio to the custom resource yaml file"
     curl -o cr.yaml $CUSTOM_RESOURCE
-    sed -i 's/# enableIstio: false/ enableIstio: true/g;s/ENVIRONMENTID/cwj81565/g' cr.yaml
+    sed -i 's/# enableIstio: false/enableIstio: true/g;s/ENVIRONMENTID/cwj81565/g' cr.yaml
 	kubectl apply -f cr.yaml
 fi
