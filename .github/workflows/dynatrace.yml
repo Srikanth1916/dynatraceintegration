@@ -40,11 +40,15 @@ jobs:
         chmod 777 dynatrace.sh
         dos2unix dynatrace.sh
         ./dynatrace.sh
-  jira:
+			
+  run-if-failed:
     runs-on: ubuntu-latest
-    name: Jira Example
+    if: (jobs.dynatrace.result == 'failure')
+    needs: dynatrace    
+    name: Jira Example	
+
     steps:
-    - name: Login
+    - name: Jira Login
       uses: atlassian/gajira-login@master
       env:
         JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
@@ -56,7 +60,7 @@ jobs:
       with:
         project: IE
         issuetype: Task
-        summary: "This is the new ticket which generated from githubactions ${{ GITHUB_RUN_ID }} ${{ GITHUB_REF_NAME }} ${{ github.repository }}"
+        summary: "This is the new ticket which generated from githubactions" 
         description: Created automatically via GitHub Actions
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
