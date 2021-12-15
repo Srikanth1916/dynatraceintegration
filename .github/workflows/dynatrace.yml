@@ -36,9 +36,8 @@ jobs:
 
   run-if-failed:
     runs-on: ubuntu-latest
-    if: (needs.dynatrace.result == 'Error')
     needs: dynatrace
-
+    if: (needs.dynatrace.result == 'failure')
     steps:
     - name: Jira Login
       uses: atlassian/gajira-login@master
