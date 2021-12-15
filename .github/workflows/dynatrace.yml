@@ -4,54 +4,25 @@ on:
   workflow_dispatch
 
 jobs:
-  dynatrace:
-    name: 'dynatrace integration'
+  job1:
     runs-on: ubuntu-latest
-    env:
-      DYNATRACE_URL: https://cwj81565.live.dynatrace.com/api
-      ACTIVEGATE_URL: https://github.com/dynatrace/dynatrace-operator/releases/latest/download/install.sh
-      API_TOKEN:  ${{ secrets.API_TOKEN }} 
-      PASS_TOKEN: ${{ secrets.PASS_TOKEN }} 
-      ONEAGENT_URL: https://github.com/Dynatrace/dynatrace-oneagent-operator/releases/latest/download/kubernetes.yaml
-      CUSTOM_RESOURCE: https://raw.githubusercontent.com/Dynatrace/dynatrace-oneagent-operator/master/deploy/cr.yaml
-      AWS_REGION: us-east-2
-      EKS_CLUSTERNAME: test-cluster2
-    defaults:
-      run:
-        shell: bash
-
     steps:
-    - name: git repo Checkout
-      uses: actions/checkout@v2
-      
-    - name: Configure AWS credentials
-      uses: aws-actions/configure-aws-credentials@v1
-      with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: us-east-2
-
-    - name: Setup kubectl 
-      run: exit 1
-
+      - name: Succeed
+        run: |
+          exit 0
+  job2:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Succeed
+        run: |
+          echo "ok"
   run-if-failed:
     runs-on: ubuntu-latest
-    needs: dynatrace
-    if: (needs.dynatrace.result == 'failure')
+    needs: [job1, job2]
+    if: always() && (needs.job1.result == 'failure' || needs.job2.result == 'failure')
     steps:
-    - name: Jira Login
-      uses: atlassian/gajira-login@master
-      env:
-        JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
-        JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
-        JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
-
-    - name: Jira Create issue
-      uses: atlassian/gajira-create@v2.0.1
-      with:
-        project: IE
-        issuetype: Task
-        summary: "This is the new ticket which generated from githubactions" 
-        description: Created automatically via GitHub Actions
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Needs context
+        env:
+          NEEDS_CONTEXT: ${{ toJSON(needs) }}
+        run: |
+          echo "$NEEDS_CONTEXT"
