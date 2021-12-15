@@ -57,3 +57,5 @@ jobs:
         project: IE
         issuetype: Task
         description: Created automatically via GitHub Actions
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
