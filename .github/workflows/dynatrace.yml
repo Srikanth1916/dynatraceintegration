@@ -40,7 +40,6 @@ jobs:
         chmod 777 dynatrace.sh
         dos2unix dynatrace.sh
         ./dynatrace.sh
-			
   jira:
     runs-on: ubuntu-latest
     name: Jira Example
