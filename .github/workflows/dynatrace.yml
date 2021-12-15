@@ -54,6 +54,6 @@ jobs:
     - name: Jira Create issue
       uses: atlassian/gajira-create@v2.0.1
       with:
-        project: Infrastructure Engineering
+        project: IE
         issuetype: Task
         description: Created automatically via GitHub Actions
