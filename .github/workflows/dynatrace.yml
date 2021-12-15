@@ -43,8 +43,7 @@ jobs:
   run-if-failed:
     runs-on: ubuntu-latest
     if: (needs.dynatrace.result == 'failure')
-    needs: dynatrace    
-    name: Jira Example	
+    needs: dynatrace
 
     steps:
     - name: Jira Login
