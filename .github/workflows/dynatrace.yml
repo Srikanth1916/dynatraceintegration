@@ -36,7 +36,7 @@ jobs:
 
   run-if-failed:
     runs-on: ubuntu-latest
-    if: (needs.dynatrace.result == 'failure')
+    if: (needs.dynatrace.result == 'Error')
     needs: dynatrace
 
     steps:
