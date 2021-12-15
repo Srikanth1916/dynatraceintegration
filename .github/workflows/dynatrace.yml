@@ -45,6 +45,8 @@ jobs:
     name: Jira Example
     needs: dynatrace
     steps:
+    - name: Failing step
+      run: exit 1
     - name: Login
       uses: atlassian/gajira-login@master
       env:
