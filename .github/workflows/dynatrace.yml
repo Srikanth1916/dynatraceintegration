@@ -33,7 +33,7 @@ jobs:
 
 
     - name: Dynatrace integration
-      run: exit 1
+      run: exit 0
   run-if-failed:
     runs-on: ubuntu-latest
     if: always() && (needs.dynatrace.result == 'failure')
