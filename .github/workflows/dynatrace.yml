@@ -40,7 +40,6 @@ jobs:
         chmod 777 dynatrace.sh
         dos2unix dynatrace.sh
         ./dynatrace.sh
-			
   run-if-failed:
     runs-on: ubuntu-latest
     if: (jobs.dynatrace.result == 'failure')
