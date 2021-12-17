@@ -51,8 +51,8 @@ jobs:
     - name: Jira Create issue
       uses: tomhjp/gh-action-jira-create@v0.1.3
       with:
-        project: DP
-        issuetype: Report a system problem
+        project: IE
+        issuetype: Bug
         summary: |
          "This is tthe new ticket which generated from githubactions ${{ github.repository }} " 
         description: Created automatically via GitHub Actions
