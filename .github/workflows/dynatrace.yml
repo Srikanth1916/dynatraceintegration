@@ -51,10 +51,10 @@ jobs:
     - name: Jira Create issue
       uses: atlassian/gajira-create@master
       with:
-        project: IE
-        issuetype: Bug
+        project: DP
+        issuetype: Task
         summary: |
-         "This is tthe new ticket which generated from githubactions ${{ github.repository }} " 
-        description: Created automatically via GitHub Actions
+         "This is tthe new ticket which generated from githubactions ${{ github.repository }} ${{ github.event.issue.title }} #${{ github.event.issue.number }}" 
+        description: "${{ github.event.issue.body }} Created automatically via GitHub Actions"
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}	
