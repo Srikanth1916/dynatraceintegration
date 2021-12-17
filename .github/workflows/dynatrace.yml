@@ -52,7 +52,7 @@ jobs:
       uses: atlassian/gajira-create@v2.0.1
       with:
         project: DP
-        issuetype: 'Report a system problem'
+        issuetype: Incidents
         summary: "This is tthe new ticket which generated from githubactions" 
         description: Created automatically via GitHub Actions
       env:
