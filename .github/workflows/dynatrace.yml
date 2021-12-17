@@ -51,7 +51,7 @@ jobs:
     - name: Jira Create issue
       uses: atlassian/gajira-create@v2.0.1
       with:
-        project: IE
+        project: DP
         issuetype: Incident
         summary: "This is the new ticket which generated from githubactions" 
         description: Created automatically via GitHub Actions
