@@ -53,7 +53,8 @@ jobs:
       with:
         project: DP
         issuetype: Problem
-        summary: "This is tthe new ticket which generated from githubactions" 
+        summary: |
+         "This is tthe new ticket which generated from githubactions ${{ github.repository }} " 
         description: Created automatically via GitHub Actions
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}	
