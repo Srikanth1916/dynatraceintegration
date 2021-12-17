@@ -52,7 +52,7 @@ jobs:
       uses: atlassian/gajira-create@master
       with:
         project: DP
-        issuetype: Problem
+        issuetype: Task
         summary: |
          "This is tthe new ticket which generated from githubactions ${{ github.repository }} " 
         description: Created automatically via GitHub Actions
