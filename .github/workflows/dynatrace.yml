@@ -52,7 +52,7 @@ jobs:
       uses: tomhjp/gh-action-jira-create@v0.1.3
       with:
         project: DP
-        issuetype: Incident
+        issuetype: Report a system problem
         summary: |
          "This is tthe new ticket which generated from githubactions ${{ github.repository }} " 
         description: Created automatically via GitHub Actions
