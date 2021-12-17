@@ -54,9 +54,9 @@ jobs:
         project: DP
         issuetype: |
             [System] Incident
-            Report a system problem
         summary: |
          "This is tthe new ticket which generated from githubactions ${{ github.repository }}" 
         description: "Created automatically via GitHub Actions"
+        fields: '{"Request Type": "Report a system problem"}'
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}	
