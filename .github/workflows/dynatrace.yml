@@ -49,10 +49,10 @@ jobs:
         JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
 
     - name: Jira Create issue
-      uses: atlassian/gajira-create@v2.0.1
+      uses: atlassian/gajira-create@master
       with:
         project: DP
-        issuetype: Incidents
+        issuetype: Report a system problem
         summary: "This is tthe new ticket which generated from githubactions" 
         description: Created automatically via GitHub Actions
       env:
