@@ -1,7 +1,9 @@
 name: 'tagging'
 
 on:
-  workflow_dispatch
+  create:
+    tags:
+      - "v[0-9].[0-9]+.[0-9]+"
 
 jobs:
   testing:
@@ -22,3 +24,7 @@ jobs:
         sleep 5
         echo "second command"
         git tag -l
+        sleep 5
+        echo github.ref
+        sleep 5
+        echo ${{ github.ref }}
