@@ -11,4 +11,6 @@ jobs:
         with:
           repository: Srikanth1916/dynatraceintegration
       - run: |
+          git fetch --unshallow --tags
+          echo $?
           git tag --list
