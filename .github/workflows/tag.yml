@@ -1,0 +1,21 @@
+name: 'tag'
+
+on:
+  workflow_dispatch
+
+jobs:
+  testing:
+    name: 'testing process'
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+    - name: git repo Checkout
+      uses: actions/checkout@v2
+      
+    - name: git tag
+      run : |
+        git fetch --unshallow --tags
+        git tag -l 
