@@ -11,5 +11,5 @@ jobs:
         with:
           repository: ${{ github.repository }}
       - run: |
-          git fetch --unshallow --tags
+          #git fetch --unshallow --tags
           git tag --list
