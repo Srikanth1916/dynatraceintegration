@@ -8,8 +8,6 @@ jobs:
     steps:
       - name: git checkout
         uses: actions/checkout@v2
-        with:
-          repository: ${{ github.repository }}
       - run: |
-          #git fetch --unshallow --tags
+          git fetch --unshallow --tags
           git tag --list
