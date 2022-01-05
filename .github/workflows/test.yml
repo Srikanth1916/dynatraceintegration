@@ -19,5 +19,6 @@ jobs:
       run : |
         echo "first command"
         git fetch --unshallow --tags
+        sleep 5
         echo "second command"
         git tag -l
