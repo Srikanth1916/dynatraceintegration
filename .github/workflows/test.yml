@@ -11,5 +11,5 @@ jobs:
         
       - name: list all the tags
         run: |
-            sudo apt-get install git* -y
+            git --version
             git tag -l
