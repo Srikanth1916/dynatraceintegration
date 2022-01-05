@@ -25,6 +25,8 @@ jobs:
         echo "second command"
         git tag -l
         sleep 5
+        echo "tird command"
         echo github.ref
         sleep 5
+        echo "4th command"
         echo ${{ github.ref }}
