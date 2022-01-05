@@ -1,0 +1,38 @@
+name: 'tagging'
+
+on:
+  push:
+    branches:
+      - master
+    tags:  
+      - "v[0-9].[0-9]+.[0-9]+"
+
+jobs:
+  testing:
+    name: 'testing process'
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+    - name: git repo Checkout
+      uses: actions/checkout@v2
+   
+
+    - name: Check Tag
+      id: check-tag
+      run: |
+          if [[ ${{ github.event.base_ref }} = refs/heads/main ]]; then
+              echo "Match found As it is commited from main branch"
+          else
+          echo "commited from another branch"
+          exit 1
+          fi
+
+    - name: Setup Java JDK
+      uses: actions/setup-java@v2
+      with:
+        java-version: 17
+        distribution: 'adopt'
+        cache: maven
