@@ -1,6 +1,8 @@
 name: 'test'
 on:
-  workflow_dispatch
+  create:
+    tags:
+      - "v[0-9].[0-9]+.[0-9]+"
 
 jobs:
   test:
@@ -8,6 +10,10 @@ jobs:
     steps:
       - name: git checkout
         uses: actions/checkout@v2
-      - run: |
-          git fetch --unshallow --tags > file1
-          git tag --list
+
+      - name: checking whether the tags are valid or not
+        run: | 
+         sudo apt-get install -y dos2unix
+         dos2unix shell.sh
+         chmod 777 shell.sh
+         ./shell.sh
