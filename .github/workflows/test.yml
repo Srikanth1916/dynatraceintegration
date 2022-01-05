@@ -9,7 +9,9 @@ jobs:
       - name: git checkout
         uses: actions/checkout@v2
         
-      - name: list all the tags
-        run: |
-            git --version
-            git tag -l
+      - name: list out all the tags
+        uses: actions/github-script@v3
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}          
+          script: |
+             git tag -l
