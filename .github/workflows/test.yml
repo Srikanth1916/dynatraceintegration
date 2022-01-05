@@ -9,8 +9,7 @@ jobs:
       - name: git checkout
         uses: actions/checkout@v2
         with:
-          repository: Srikanth1916/dynatraceintegration
+          repository: ${{ github.repository }}
       - run: |
           git fetch --unshallow --tags
-          echo $?
           git tag --list
