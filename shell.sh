@@ -1,7 +1,8 @@
 git fetch --unshallow --tags
 git tag -l > file1
-echo ${{ github.ref }} | awk -F '/' '{print $3}' > file2
-C=`cat file2`
+echo ${{ github.ref }} > file2 
+cat file2 | awk -F '/' '{print $3}' > file3
+C=`cat file3`
 
 if grep $C file1
 then
