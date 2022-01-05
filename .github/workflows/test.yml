@@ -13,9 +13,14 @@ jobs:
 
       - name: checking whether the tags are valid or not
         run: | 
+         git fetch --unshallow --tags
+         git tag -l > file1
          echo ${{ github.ref }} | awk -F '/' '{print $3}' > file2
-         cat file2
-         sudo apt-get install -y dos2unix
-         dos2unix shell.sh
-         chmod 777 shell.sh
-         ./shell.sh
+         C=`cat file2`
+         if grep $C file1
+         then
+           echo "Latest tag is found and good to proceed with the next steps"
+         else
+           echo "Latest tag is not found"
+         exit 1
+         fi
