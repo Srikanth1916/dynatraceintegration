@@ -29,5 +29,6 @@ jobs:
         echo github.ref
         sleep 5
         echo "4th command"
-        echo ${{ github.ref }} | awk -F '/' {print $3} > file1
-        cat file1
+        echo ${{ github.ref }} | awk -F '/' '{print $3}' > srikanth
+        echo "5th command"
+        cat srikanth
