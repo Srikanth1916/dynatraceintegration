@@ -17,5 +17,7 @@ jobs:
       
     - name: git tag
       run : |
+        echo "first command"
         git fetch --unshallow --tags
+        echo "second command"
         git tag -l
