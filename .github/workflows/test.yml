@@ -9,5 +9,5 @@ jobs:
       - name: git checkout
         uses: actions/checkout@v2
       - run: |
-          git fetch --unshallow --tags
+          git fetch --unshallow --tags > file1
           git tag --list
