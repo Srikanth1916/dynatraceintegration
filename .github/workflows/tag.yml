@@ -1,4 +1,4 @@
-name: 'tag'
+name: 'tagging'
 
 on:
   workflow_dispatch
